@@ -1,4 +1,10 @@
-from node:8-alpine
-RUN npm install --unsafe-perm -g grpcc
+from znly/protoc
+
 WORKDIR /proto
-ENTRYPOINT ["grpcc"]
+
+RUN apk add --no-cache --virtual deps git && \
+    apk add --no-cache nodejs nodejs-npm && \
+    npm install --unsafe-perm -g jfyne/grpcc && \
+    apk del deps
+
+ENTRYPOINT ["grpcc", "--directory", "/"]
