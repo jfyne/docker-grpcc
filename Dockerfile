@@ -7,4 +7,4 @@ RUN apk add --no-cache --virtual deps git && \
     npm install --unsafe-perm -g jfyne/grpcc && \
     apk del deps
 
-ENTRYPOINT ["grpcc", "--directory", "/"]
+ENTRYPOINT ["grpcc"]
